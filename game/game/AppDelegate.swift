@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  foodGram
+//  game
 //
-//  Created by Henna Ahmed on 1/12/16.
+//  Created by Henna Ahmed on 1/17/16.
 //  Copyright © 2016 Henna Ahmed. All rights reserved.
 //
 

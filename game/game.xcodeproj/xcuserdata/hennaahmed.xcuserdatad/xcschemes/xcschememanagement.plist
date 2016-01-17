@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>foodGram.xcscheme</key>
+		<key>game.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>F0BC4A881C45986D00376773</key>
+		<key>F078C4381C4C4F6E007295E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0BC4A9C1C45986D00376773</key>
+		<key>F078C44E1C4C4F6E007295E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0BC4AA71C45986D00376773</key>
+		<key>F078C4591C4C4F6E007295E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

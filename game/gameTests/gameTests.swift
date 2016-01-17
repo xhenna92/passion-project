@@ -1,15 +1,15 @@
 //
-//  foodGramTests.swift
-//  foodGramTests
+//  gameTests.swift
+//  gameTests
 //
-//  Created by Henna Ahmed on 1/12/16.
+//  Created by Henna Ahmed on 1/17/16.
 //  Copyright © 2016 Henna Ahmed. All rights reserved.
 //
 
 import XCTest
-@testable import foodGram
+@testable import game
 
-class foodGramTests: XCTestCase {
+class gameTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

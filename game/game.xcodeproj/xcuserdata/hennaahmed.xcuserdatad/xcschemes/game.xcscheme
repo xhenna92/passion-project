@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F0BC4A881C45986D00376773"
-               BuildableName = "foodGram.app"
-               BlueprintName = "foodGram"
-               ReferencedContainer = "container:foodGram.xcodeproj">
+               BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
+               BuildableName = "game.app"
+               BlueprintName = "game"
+               ReferencedContainer = "container:game.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F0BC4A9C1C45986D00376773"
-               BuildableName = "foodGramTests.xctest"
-               BlueprintName = "foodGramTests"
-               ReferencedContainer = "container:foodGram.xcodeproj">
+               BlueprintIdentifier = "F078C44E1C4C4F6E007295E0"
+               BuildableName = "gameTests.xctest"
+               BlueprintName = "gameTests"
+               ReferencedContainer = "container:game.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F0BC4AA71C45986D00376773"
-               BuildableName = "foodGramUITests.xctest"
-               BlueprintName = "foodGramUITests"
-               ReferencedContainer = "container:foodGram.xcodeproj">
+               BlueprintIdentifier = "F078C4591C4C4F6E007295E0"
+               BuildableName = "gameUITests.xctest"
+               BlueprintName = "gameUITests"
+               ReferencedContainer = "container:game.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F0BC4A881C45986D00376773"
-            BuildableName = "foodGram.app"
-            BlueprintName = "foodGram"
-            ReferencedContainer = "container:foodGram.xcodeproj">
+            BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
+            BuildableName = "game.app"
+            BlueprintName = "game"
+            ReferencedContainer = "container:game.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F0BC4A881C45986D00376773"
-            BuildableName = "foodGram.app"
-            BlueprintName = "foodGram"
-            ReferencedContainer = "container:foodGram.xcodeproj">
+            BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
+            BuildableName = "game.app"
+            BlueprintName = "game"
+            ReferencedContainer = "container:game.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F0BC4A881C45986D00376773"
-            BuildableName = "foodGram.app"
-            BlueprintName = "foodGram"
-            ReferencedContainer = "container:foodGram.xcodeproj">
+            BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
+            BuildableName = "game.app"
+            BlueprintName = "game"
+            ReferencedContainer = "container:game.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
