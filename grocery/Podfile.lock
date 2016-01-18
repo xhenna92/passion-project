@@ -1,0 +1,10 @@
+PODS:
+  - WJBarCodeScanner (0.0.4)
+
+DEPENDENCIES:
+  - WJBarCodeScanner (~> 0.0)
+
+SPEC CHECKSUMS:
+  WJBarCodeScanner: 793071e8dddc64ec21d427d59a3d68d04a263563
+
+COCOAPODS: 0.39.0
