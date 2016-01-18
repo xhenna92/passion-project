@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
-               BuildableName = "game.app"
-               BlueprintName = "game"
-               ReferencedContainer = "container:game.xcodeproj">
+               BlueprintIdentifier = "F0F628D61C4D7EE000CCC9C7"
+               BuildableName = "grocery.app"
+               BlueprintName = "grocery"
+               ReferencedContainer = "container:grocery.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F078C44E1C4C4F6E007295E0"
-               BuildableName = "gameTests.xctest"
-               BlueprintName = "gameTests"
-               ReferencedContainer = "container:game.xcodeproj">
+               BlueprintIdentifier = "F0F628EA1C4D7EE000CCC9C7"
+               BuildableName = "groceryTests.xctest"
+               BlueprintName = "groceryTests"
+               ReferencedContainer = "container:grocery.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F078C4591C4C4F6E007295E0"
-               BuildableName = "gameUITests.xctest"
-               BlueprintName = "gameUITests"
-               ReferencedContainer = "container:game.xcodeproj">
+               BlueprintIdentifier = "F0F628F51C4D7EE000CCC9C7"
+               BuildableName = "groceryUITests.xctest"
+               BlueprintName = "groceryUITests"
+               ReferencedContainer = "container:grocery.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
-            BuildableName = "game.app"
-            BlueprintName = "game"
-            ReferencedContainer = "container:game.xcodeproj">
+            BlueprintIdentifier = "F0F628D61C4D7EE000CCC9C7"
+            BuildableName = "grocery.app"
+            BlueprintName = "grocery"
+            ReferencedContainer = "container:grocery.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
-            BuildableName = "game.app"
-            BlueprintName = "game"
-            ReferencedContainer = "container:game.xcodeproj">
+            BlueprintIdentifier = "F0F628D61C4D7EE000CCC9C7"
+            BuildableName = "grocery.app"
+            BlueprintName = "grocery"
+            ReferencedContainer = "container:grocery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F078C4381C4C4F6E007295E0"
-            BuildableName = "game.app"
-            BlueprintName = "game"
-            ReferencedContainer = "container:game.xcodeproj">
+            BlueprintIdentifier = "F0F628D61C4D7EE000CCC9C7"
+            BuildableName = "grocery.app"
+            BlueprintName = "grocery"
+            ReferencedContainer = "container:grocery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

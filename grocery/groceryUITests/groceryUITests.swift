@@ -1,14 +1,14 @@
 //
-//  gameUITests.swift
-//  gameUITests
+//  groceryUITests.swift
+//  groceryUITests
 //
-//  Created by Henna Ahmed on 1/17/16.
+//  Created by Henna Ahmed on 1/18/16.
 //  Copyright © 2016 Henna Ahmed. All rights reserved.
 //
 
 import XCTest
 
-class gameUITests: XCTestCase {
+class groceryUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>game.xcscheme</key>
+		<key>grocery.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>F078C4381C4C4F6E007295E0</key>
+		<key>F0F628D61C4D7EE000CCC9C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F078C44E1C4C4F6E007295E0</key>
+		<key>F0F628EA1C4D7EE000CCC9C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F078C4591C4C4F6E007295E0</key>
+		<key>F0F628F51C4D7EE000CCC9C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

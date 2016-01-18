@@ -1,15 +1,15 @@
 //
-//  gameTests.swift
-//  gameTests
+//  groceryTests.swift
+//  groceryTests
 //
-//  Created by Henna Ahmed on 1/17/16.
+//  Created by Henna Ahmed on 1/18/16.
 //  Copyright © 2016 Henna Ahmed. All rights reserved.
 //
 
 import XCTest
-@testable import game
+@testable import grocery
 
-class gameTests: XCTestCase {
+class groceryTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  game
+//  grocery
 //
-//  Created by Henna Ahmed on 1/17/16.
+//  Created by Henna Ahmed on 1/18/16.
 //  Copyright © 2016 Henna Ahmed. All rights reserved.
 //
 
