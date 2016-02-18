@@ -9,6 +9,7 @@
 #import "InventoryTableViewController.h"
 #import "AddFoodViewController.h"
 #import "NSDate+RelativeTime.h"
+#import "InventoryTableViewCell.h"
 #import <Firebase/Firebase.h>
 
 
@@ -24,6 +25,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // set up custom cell
+    UINib *nib = [UINib nibWithNibName:@"InventoryTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"cellIdentifier"];
+    
+    // set height of cell to adjust to text
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 50;
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                 initWithTitle:@"Add"
                                                 style:UIBarButtonSystemItemAdd
@@ -31,6 +40,8 @@
                                                 action:@selector(addFood:)];
     
     self.foods = [[NSMutableArray alloc] init];
+    
+
     
     
     
@@ -157,15 +168,18 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"inventoryIdentifier" forIndexPath:indexPath];
+    InventoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     
     NSString *key = self.foods[indexPath.row];
     NSTimeInterval interval = [[[self.jsonFoods objectForKey:key] objectForKey:@"Expiration Date"] doubleValue];
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:interval];
     NSString *time_ago = [date relativeTime];
     
-    cell.textLabel.text = self.foods[indexPath.row];
-    cell.detailTextLabel.text = time_ago;
+    
+    
+    cell.labelFood.text = self.foods[indexPath.row];
+    cell.labelDate.text = time_ago;
+    
     
     return cell;
 }

@@ -4,19 +4,63 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Firebase.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>HSDatePickerViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>NSDate+RelativeTime.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Unirest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1820533B25A5682E2B3DDCBE6B35FED5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4BE08790DE00004E1ED3C0CFB6CE9370</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FC57AD0A574066CF6D2C2D9857A50F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>569735B422E0E4CEEFC5C6955AFDE3A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6B0B9C928B05BA6346AB032DD0260C56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7300726BC287BAA299C777A9246E2671</key>
 		<dict>
 			<key>primary</key>
