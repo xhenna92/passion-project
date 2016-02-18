@@ -16,6 +16,7 @@
 		4DA094BE1C73E79B002F2750 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA094BD1C73E79B002F2750 /* Assets.xcassets */; };
 		4DA094C11C73E79B002F2750 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA094BF1C73E79B002F2750 /* LaunchScreen.storyboard */; };
 		80F572206D454507BACF060C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2715DF183509F90B0EA2DF /* libPods.a */; };
+		F0DEB2481C764781004A2311 /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DEB2471C764781004A2311 /* AddFoodViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		4DA094C01C73E79B002F2750 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DA094C21C73E79B002F2750 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C147D13EDC2589C0A8C553D8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F0DEB2461C764781004A2311 /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
+		F0DEB2471C764781004A2311 /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				4D8664B81C755113005BE801 /* FoodResult.h */,
 				4D8664B91C755113005BE801 /* FoodResult.m */,
 				4DA094BA1C73E79B002F2750 /* Main.storyboard */,
+				F0DEB2461C764781004A2311 /* AddFoodViewController.h */,
+				F0DEB2471C764781004A2311 /* AddFoodViewController.m */,
 				4DA094BD1C73E79B002F2750 /* Assets.xcassets */,
 				4DA094BF1C73E79B002F2750 /* LaunchScreen.storyboard */,
 				4DA094C21C73E79B002F2750 /* Info.plist */,
@@ -236,6 +241,7 @@
 			files = (
 				4DA094B91C73E79B002F2750 /* ViewController.m in Sources */,
 				4DA094B61C73E79B002F2750 /* AppDelegate.m in Sources */,
+				F0DEB2481C764781004A2311 /* AddFoodViewController.m in Sources */,
 				4D8664BA1C755113005BE801 /* FoodResult.m in Sources */,
 				4D8664BD1C755D93005BE801 /* InventoryTableViewController.m in Sources */,
 				4DA094B31C73E79B002F2750 /* main.m in Sources */,
@@ -350,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "grocery-objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shenayoshida.grocery-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -362,6 +369,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "grocery-objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shenayoshida.grocery-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";

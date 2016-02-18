@@ -7,10 +7,15 @@
 //
 
 #import "InventoryTableViewController.h"
+#import "AddFoodViewController.h"
+#import "NSDate+RelativeTime.h"
+#import <Firebase/Firebase.h>
+
 
 @interface InventoryTableViewController ()
 
 @property (nonatomic) NSMutableArray *foods;
+@property (nonatomic) NSDictionary *jsonFoods;
 
 @end
 
@@ -19,99 +24,125 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                                initWithTitle:@"Add"
+                                                style:UIBarButtonSystemItemAdd
+                                                target:self
+                                                action:@selector(addFood:)];
     
-    // test array:
-    NSArray *array = @[@"bread", @"eggs", @"fish", @"eggplant", @"banannas", @"shrimp", @"apples", @"roast beef", @"mushrooms", @"butter", @"hot sauce", @"pickles", @"marmalade", @"ketchup", @"mustard", @"broccoli", @"bacon", @"spinach", @"chicken", @"cheese"];
+    self.foods = [[NSMutableArray alloc] init];
     
-    self.foods = [[NSMutableArray alloc]initWithArray:array];
-   
     
-    // append emoji
-    NSMutableString *withEmoji = [[NSMutableString alloc] init];
-    NSMutableArray *itemsToRemove = [[NSMutableArray alloc] init];
     
-    for (NSString *item in self.foods) {
-        
-        
-        if ([item  isEqualToString: @"chicken"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🐔 %@", item];
-            [itemsToRemove addObject:item]; // collect items to remove from array
-        }
-        else if ([item  isEqualToString: @"bread"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍞 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"eggs"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍳 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"fish"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🐟 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"bread"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍞 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"eggplant"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍆 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"banannas"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍌 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"shrimp"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍤 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"apples"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍎 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"beef"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🐮 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"mushrooms"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍄 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"butter"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"✨ %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"hot sauce"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🌶 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"tomato"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🍅 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"broccoli"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🌳 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"spinach"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🌱 %@", item];
-            [itemsToRemove addObject:item];
-        }
-        else if ([item  isEqualToString: @"bacon"]) {
-            withEmoji = [NSMutableString stringWithFormat:@"🐷 %@", item];
-            [itemsToRemove addObject:item];
-        }
-//         else {
-//           withEmoji = [NSMutableString stringWithFormat:@"🍽 %@", item];
+//    // test array:
+//    NSArray *array = @[@"bread", @"eggs", @"fish", @"eggplant", @"banannas", @"shrimp", @"apples", @"roast beef", @"mushrooms", @"butter", @"hot sauce", @"pickles", @"marmalade", @"ketchup", @"mustard", @"broccoli", @"bacon", @"spinach", @"chicken", @"cheese"];
+//    
+//    self.foods = [[NSMutableArray alloc]initWithArray:array];
+//   
+//    
+//    // append emoji
+//    NSMutableString *withEmoji = [[NSMutableString alloc] init];
+//    NSMutableArray *itemsToRemove = [[NSMutableArray alloc] init];
+//    
+//    for (NSString *item in self.foods) {
+//        
+//        
+//        if ([item  isEqualToString: @"chicken"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🐔 %@", item];
+//            [itemsToRemove addObject:item]; // collect items to remove from array
+//        }
+//        else if ([item  isEqualToString: @"bread"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍞 %@", item];
 //            [itemsToRemove addObject:item];
-//            }
-        }
-    
-    [self.foods insertObject:withEmoji atIndex:0];
-    [self.foods removeObjectsInArray:itemsToRemove];
+//        }
+//        else if ([item  isEqualToString: @"eggs"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍳 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"fish"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🐟 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"bread"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍞 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"eggplant"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍆 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"banannas"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍌 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"shrimp"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍤 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"apples"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍎 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"beef"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🐮 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"mushrooms"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍄 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"butter"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"✨ %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"hot sauce"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🌶 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"tomato"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🍅 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"broccoli"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🌳 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"spinach"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🌱 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+//        else if ([item  isEqualToString: @"bacon"]) {
+//            withEmoji = [NSMutableString stringWithFormat:@"🐷 %@", item];
+//            [itemsToRemove addObject:item];
+//        }
+////         else {
+////           withEmoji = [NSMutableString stringWithFormat:@"🍽 %@", item];
+////            [itemsToRemove addObject:item];
+////            }
+//        }
+//    
+//    [self.foods insertObject:withEmoji atIndex:0];
+//    [self.foods removeObjectsInArray:itemsToRemove];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self.foods removeAllObjects];
+    // read data
+    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
+    [myRootRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (snapshot.value != [NSNull null]) {
+        self.jsonFoods = snapshot.value;
+        self.foods = [self.jsonFoods.allKeys mutableCopy];
+        [self.tableView reloadData];
+        }
+        
+    }];
+}
+
+-(IBAction)addFood:(id)sender{
+   AddFoodViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"addFoodVC"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 
 #pragma mark - Table view data source
@@ -128,8 +159,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"inventoryIdentifier" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.foods[indexPath.row];
+    NSString *key = self.foods[indexPath.row];
+    NSTimeInterval interval = [[[self.jsonFoods objectForKey:key] objectForKey:@"Expiration Date"] doubleValue];
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:interval];
+    NSString *time_ago = [date relativeTime];
     
+    cell.textLabel.text = self.foods[indexPath.row];
+    cell.detailTextLabel.text = time_ago;
     
     return cell;
 }

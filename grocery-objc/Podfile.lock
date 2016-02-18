@@ -1,10 +1,19 @@
 PODS:
+  - Firebase (2.5.1)
+  - HSDatePickerViewController (1.0.4)
+  - NSDate+RelativeTime (1.0.1)
   - Unirest (1.1.4)
 
 DEPENDENCIES:
+  - Firebase (>= 2.5.0)
+  - HSDatePickerViewController (~> 1.0)
+  - NSDate+RelativeTime (~> 1.0)
   - Unirest (~> 1.1.4)
 
 SPEC CHECKSUMS:
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  HSDatePickerViewController: 5a72b71f8c3b10e76f2c28a898f8572b551432a6
+  NSDate+RelativeTime: 1b03a562615a4496a826e322096e5792e6706612
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
 
 COCOAPODS: 0.39.0
