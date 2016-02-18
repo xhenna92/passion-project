@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D8664BA1C755113005BE801 /* FoodResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664B91C755113005BE801 /* FoodResult.m */; };
+		4D8664BD1C755D93005BE801 /* InventoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664BC1C755D93005BE801 /* InventoryTableViewController.m */; };
 		4DA094B31C73E79B002F2750 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA094B21C73E79B002F2750 /* main.m */; };
 		4DA094B61C73E79B002F2750 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA094B51C73E79B002F2750 /* AppDelegate.m */; };
 		4DA094B91C73E79B002F2750 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA094B81C73E79B002F2750 /* ViewController.m */; };
@@ -19,6 +21,10 @@
 /* Begin PBXFileReference section */
 		03D5FD406498C36B9A12A0AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3A2715DF183509F90B0EA2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8664B81C755113005BE801 /* FoodResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodResult.h; sourceTree = "<group>"; };
+		4D8664B91C755113005BE801 /* FoodResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodResult.m; sourceTree = "<group>"; };
+		4D8664BB1C755D93005BE801 /* InventoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryTableViewController.h; sourceTree = "<group>"; };
+		4D8664BC1C755D93005BE801 /* InventoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryTableViewController.m; sourceTree = "<group>"; };
 		4DA094AE1C73E79B002F2750 /* grocery-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "grocery-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA094B21C73E79B002F2750 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4DA094B41C73E79B002F2750 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +84,10 @@
 				4DA094B51C73E79B002F2750 /* AppDelegate.m */,
 				4DA094B71C73E79B002F2750 /* ViewController.h */,
 				4DA094B81C73E79B002F2750 /* ViewController.m */,
+				4D8664BB1C755D93005BE801 /* InventoryTableViewController.h */,
+				4D8664BC1C755D93005BE801 /* InventoryTableViewController.m */,
+				4D8664B81C755113005BE801 /* FoodResult.h */,
+				4D8664B91C755113005BE801 /* FoodResult.m */,
 				4DA094BA1C73E79B002F2750 /* Main.storyboard */,
 				4DA094BD1C73E79B002F2750 /* Assets.xcassets */,
 				4DA094BF1C73E79B002F2750 /* LaunchScreen.storyboard */,
@@ -226,6 +236,8 @@
 			files = (
 				4DA094B91C73E79B002F2750 /* ViewController.m in Sources */,
 				4DA094B61C73E79B002F2750 /* AppDelegate.m in Sources */,
+				4D8664BA1C755113005BE801 /* FoodResult.m in Sources */,
+				4D8664BD1C755D93005BE801 /* InventoryTableViewController.m in Sources */,
 				4DA094B31C73E79B002F2750 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
