@@ -11,12 +11,11 @@
 #import "NSDate+RelativeTime.h"
 #import "InventoryTableViewCell.h"
 #import <Firebase/Firebase.h>
+#import "foodModel.h"
 
 
 @interface InventoryTableViewController ()
-
-@property (nonatomic) NSMutableArray *foods;
-
+    @property (nonatomic) foodModel *sharedManager;
 @end
 
 @implementation InventoryTableViewController
@@ -38,12 +37,12 @@
                                                 target:self
                                                 action:@selector(addFood:)];
     
-    self.foods = [[NSMutableArray alloc] init];
-    
+   self.sharedManager = [foodModel sharedManager];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self.foods removeAllObjects];
+    
+    [self.sharedManager.foodData removeAllObjects];
     // read data
     Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
     [myRootRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
@@ -72,7 +71,7 @@
             return [dateA compare:dateB];
         }];
             
-        self.foods = [sortedArray mutableCopy];
+        self.sharedManager.foodData = [sortedArray mutableCopy];
         [self.tableView reloadData];
         }
         
@@ -92,14 +91,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.foods.count;
+    return self.sharedManager.foodData.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     InventoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     
-    NSDictionary *foodObject = self.foods[indexPath.row];
+    NSDictionary *foodObject = self.sharedManager.foodData[indexPath.row];
     
     NSString *key = [[foodObject allKeys] firstObject];
     
