@@ -10,6 +10,7 @@
 #import "FoodResult.h"
 #import <UNIRest.h>
 #import "foodModel.h"
+#import "RecipeDetailViewController.h"
 
 @interface RecipesTableViewController ()
     @property (nonatomic) NSMutableArray * recipes;
@@ -22,8 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"view loaded");
     
     self.recipes = [[NSMutableArray alloc]init];
     self.aboutToExpire = [[NSMutableArray alloc]init];
@@ -92,14 +91,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCellIdentifier" forIndexPath:indexPath];
     NSDictionary * recipe = self.recipes[indexPath.row];
-    
+    NSLog(@"%@", recipe);
     cell.textLabel.text = [recipe objectForKey:@"title"];
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [recipe objectForKey:@"image"]]];
-    cell.imageView.image = [UIImage imageWithData: imageData];
+//    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [recipe objectForKey:@"image"]]];
+//    cell.imageView.image = [UIImage imageWithData: imageData];
     
     return cell;
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    RecipeDetailViewController *destViewController = segue.destinationViewController;
+    destViewController.recipeID = [self.recipes[indexPath.row] objectForKey:@"id"];
+    
+}
+
 
 
 /*

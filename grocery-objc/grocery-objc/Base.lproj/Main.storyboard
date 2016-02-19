@@ -111,6 +111,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="aIa-fZ-wop" kind="show" id="pUR-6C-4va"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -140,6 +143,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mty-WW-xh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="677" y="-85"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="2hh-mZ-gdC">
+            <objects>
+                <viewController id="aIa-fZ-wop" customClass="RecipeDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ifb-xG-lDI"/>
+                        <viewControllerLayoutGuide type="bottom" id="bDR-Zu-7g9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wi4-oU-Zkc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-sW-Sv4">
+                                <rect key="frame" x="0.0" y="64" width="600" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HD-RM-LGu">
+                                <rect key="frame" x="20" y="94.5" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eRU-sW-Sv4" firstAttribute="top" secondItem="Ifb-xG-lDI" secondAttribute="bottom" id="1KW-3r-Hpa"/>
+                            <constraint firstItem="eRU-sW-Sv4" firstAttribute="leading" secondItem="wi4-oU-Zkc" secondAttribute="leading" id="5DE-lw-VPX"/>
+                            <constraint firstAttribute="trailing" secondItem="eRU-sW-Sv4" secondAttribute="trailing" id="FoS-2u-pkm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2HD-RM-LGu" secondAttribute="trailing" id="Hu7-18-FX4"/>
+                            <constraint firstItem="2HD-RM-LGu" firstAttribute="leading" secondItem="wi4-oU-Zkc" secondAttribute="leadingMargin" id="c8v-9l-A7k"/>
+                            <constraint firstItem="2HD-RM-LGu" firstAttribute="top" secondItem="eRU-sW-Sv4" secondAttribute="bottom" constant="10" id="vUw-e9-tVa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="recipeIngredients" destination="2HD-RM-LGu" id="uQ4-pr-vZJ"/>
+                        <outlet property="recipeTitle" destination="eRU-sW-Sv4" id="ZG2-dZ-QHP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0es-QX-YTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2064" y="-91"/>
         </scene>
         <!--Add Food View Controller-->
         <scene sceneID="AUw-gt-dkL">
@@ -214,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxX-dm-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960" y="-476"/>
+            <point key="canvasLocation" x="1536" y="-804"/>
         </scene>
     </scenes>
 </document>
