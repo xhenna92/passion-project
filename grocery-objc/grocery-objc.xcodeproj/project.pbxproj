@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D73B3DF1C77CA1800B5D8AA /* RecipesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D73B3DD1C77CA1800B5D8AA /* RecipesTableViewCell.m */; };
+		4D73B3E01C77CA1800B5D8AA /* RecipesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D73B3DE1C77CA1800B5D8AA /* RecipesTableViewCell.xib */; };
 		4D7C94741C765D21004152B4 /* InventoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C94721C765D21004152B4 /* InventoryTableViewCell.m */; };
 		4D7C94751C765D21004152B4 /* InventoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C94731C765D21004152B4 /* InventoryTableViewCell.xib */; };
 		4D8664BA1C755113005BE801 /* FoodResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664B91C755113005BE801 /* FoodResult.m */; };
@@ -27,6 +29,9 @@
 /* Begin PBXFileReference section */
 		03D5FD406498C36B9A12A0AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3A2715DF183509F90B0EA2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D73B3DC1C77CA1800B5D8AA /* RecipesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesTableViewCell.h; sourceTree = "<group>"; };
+		4D73B3DD1C77CA1800B5D8AA /* RecipesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesTableViewCell.m; sourceTree = "<group>"; };
+		4D73B3DE1C77CA1800B5D8AA /* RecipesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipesTableViewCell.xib; sourceTree = "<group>"; };
 		4D7C94711C765D21004152B4 /* InventoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryTableViewCell.h; sourceTree = "<group>"; };
 		4D7C94721C765D21004152B4 /* InventoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryTableViewCell.m; sourceTree = "<group>"; };
 		4D7C94731C765D21004152B4 /* InventoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InventoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -117,6 +122,9 @@
 				F0839B141C779A640059E033 /* RecipesTableViewController.m */,
 				F0DEB2461C764781004A2311 /* AddFoodViewController.h */,
 				F0DEB2471C764781004A2311 /* AddFoodViewController.m */,
+				4D73B3DC1C77CA1800B5D8AA /* RecipesTableViewCell.h */,
+				4D73B3DD1C77CA1800B5D8AA /* RecipesTableViewCell.m */,
+				4D73B3DE1C77CA1800B5D8AA /* RecipesTableViewCell.xib */,
 				4DA094BD1C73E79B002F2750 /* Assets.xcassets */,
 				4DA094BF1C73E79B002F2750 /* LaunchScreen.storyboard */,
 				4DA094C21C73E79B002F2750 /* Info.plist */,
@@ -202,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D7C94751C765D21004152B4 /* InventoryTableViewCell.xib in Resources */,
+				4D73B3E01C77CA1800B5D8AA /* RecipesTableViewCell.xib in Resources */,
 				4DA094C11C73E79B002F2750 /* LaunchScreen.storyboard in Resources */,
 				4DA094BE1C73E79B002F2750 /* Assets.xcassets in Resources */,
 				4DA094BC1C73E79B002F2750 /* Main.storyboard in Resources */,
@@ -267,6 +276,7 @@
 				4DA094B61C73E79B002F2750 /* AppDelegate.m in Sources */,
 				F0DEB2481C764781004A2311 /* AddFoodViewController.m in Sources */,
 				F0839B151C779A640059E033 /* RecipesTableViewController.m in Sources */,
+				4D73B3DF1C77CA1800B5D8AA /* RecipesTableViewCell.m in Sources */,
 				4D7C94741C765D21004152B4 /* InventoryTableViewCell.m in Sources */,
 				4D8664BA1C755113005BE801 /* FoodResult.m in Sources */,
 				4D8664BD1C755D93005BE801 /* InventoryTableViewController.m in Sources */,

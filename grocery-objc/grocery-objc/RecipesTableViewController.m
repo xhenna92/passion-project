@@ -11,6 +11,7 @@
 #import <UNIRest.h>
 #import "foodModel.h"
 #import "RecipeDetailViewController.h"
+#import "RecipesTableViewCell.h"
 
 @interface RecipesTableViewController ()
     @property (nonatomic) NSMutableArray * recipes;
@@ -23,6 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // set up custom cell
+    UINib *nib = [UINib nibWithNibName:@"RecipesTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"recipeIdentifier"];
+    
+    // set height of cell to adjust to text
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+//    self.tableView.estimatedRowHeight = 50;
     
     self.recipes = [[NSMutableArray alloc]init];
     self.aboutToExpire = [[NSMutableArray alloc]init];
@@ -64,6 +73,8 @@
                                                                error:nil];
         self.recipes = [json mutableCopy];
         
+        NSLog(@"json: %@", self.recipes);
+        
         [self.tableView reloadData];
         
     }];
@@ -89,13 +100,16 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCellIdentifier" forIndexPath:indexPath];
+   
+    RecipesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipeIdentifier" forIndexPath:indexPath];
     NSDictionary * recipe = self.recipes[indexPath.row];
     NSLog(@"%@", recipe);
-    cell.textLabel.text = [recipe objectForKey:@"title"];
+    cell.recipeLabel.text = [recipe objectForKey:@"title"];
     
-//    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [recipe objectForKey:@"image"]]];
-//    cell.imageView.image = [UIImage imageWithData: imageData];
+    cell.clipsToBounds = YES;
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [recipe objectForKey:@"image"]]];
+    cell.recipeImage.image = [UIImage imageWithData: imageData];
     
     return cell;
 }
