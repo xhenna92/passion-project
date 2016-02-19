@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1820533B25A5682E2B3DDCBE6B35FED5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4BE08790DE00004E1ED3C0CFB6CE9370</key>
+		<key>3B656B983B0B58C7B555EFC49FCFAA00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +53,16 @@
 			<true/>
 		</dict>
 		<key>6B0B9C928B05BA6346AB032DD0260C56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>928353533005A4198EBDA5B700D37B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD2CEBA135E848721F2D7EC758D7E2C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

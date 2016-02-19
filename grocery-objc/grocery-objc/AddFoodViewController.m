@@ -8,6 +8,7 @@
 
 #import "AddFoodViewController.h"
 #import <Firebase/Firebase.h>
+#import <AFNetworking/AFNetworking.h>
 #import "HSDatePickerViewController.h"
 
 @interface AddFoodViewController () <HSDatePickerViewControllerDelegate>
@@ -31,12 +32,36 @@
 }
 - (IBAction)addButtonTapped:(UIButton *)sender {
     
-    NSString *foodName = self.nameTextField.text;
-    NSNumber *expires = [NSNumber numberWithDouble:[self.expirationDate timeIntervalSince1970]];
-    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
-    [[myRootRef childByAppendingPath:foodName] setValue:@{ @"Expiration Date": expires }];
+    NSString *foodName = [self.nameTextField.text lowercaseString];
+    NSString *emojiURL = [NSString stringWithFormat:@"https://www.emojidex.com/api/v1/search/emoji/?code_sw=%@", foodName];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [manager GET:emojiURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray * emojiData = [responseObject objectForKey:@"emoji"];
+        NSString *moji = @"";
+        for (NSDictionary* emoji in emojiData) {
+            
+            NSString *temp = [emoji objectForKey:@"moji"];
+            
+            if ( [temp isEqualToString:@""]) {
+                
+            }
+            else{
+                moji = temp;
+                break;
+            }
+        }
+
+        NSNumber *expires = [NSNumber numberWithDouble:[self.expirationDate timeIntervalSince1970]];
+        Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
+        [[myRootRef childByAppendingPath:foodName] setValue:@{ @"Expiration Date": expires, @"emoji":moji }];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
+    
 }
 
 - (IBAction)pickDateTapped:(UIButton *)sender {

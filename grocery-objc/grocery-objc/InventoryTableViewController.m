@@ -171,13 +171,15 @@
     InventoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     
     NSString *key = self.foods[indexPath.row];
+    NSString *emoji = [[self.jsonFoods objectForKey:key] objectForKey:@"emoji"];
+    NSString *displayName = [NSString stringWithFormat:@"%@%@", key, emoji];
     NSTimeInterval interval = [[[self.jsonFoods objectForKey:key] objectForKey:@"Expiration Date"] doubleValue];
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:interval];
     NSString *time_ago = [date relativeTime];
     
     
     
-    cell.labelFood.text = self.foods[indexPath.row];
+    cell.labelFood.text = displayName;
     cell.labelDate.text = time_ago;
     
     
