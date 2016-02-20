@@ -23,6 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.tabBarController.tabBar setTranslucent:YES];
+    
     // set up custom cell
     UINib *nib = [UINib nibWithNibName:@"InventoryTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"cellIdentifier"];
