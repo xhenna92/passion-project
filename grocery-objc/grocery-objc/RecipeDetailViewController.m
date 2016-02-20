@@ -13,6 +13,9 @@
 @interface RecipeDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *recipeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *recipeIngredients;
+@property (weak, nonatomic) IBOutlet UIImageView *recipeImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *recipeInstructions;
 
 @end
 
@@ -36,15 +39,24 @@
                                                              options:kNilOptions
                                                                error:nil];
         
+        //NSString *image = [json objectForKey:@"image"];
+        //
+        //[json objectForKey:@"readyInMinutes"];
+        //[json objectForKey:@"servings"];
+        // sourceUrl
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             self.recipeTitle.text = [json objectForKey:@"title"];
+            self.recipeInstructions.text = [self convertHTML:[json objectForKey:@"instructions"]];
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [json objectForKey:@"image"]]];
+            self.recipeImage.image = [UIImage imageWithData: imageData];
             NSArray *ingredients = [json objectForKey:@"extendedIngredients"];
             NSMutableString* allIngredients = [NSMutableString stringWithCapacity:150];
             
             for(NSDictionary * ingredient in ingredients){
                 NSString * ingredientName = [ingredient objectForKey:@"originalString"];
                 [allIngredients appendFormat:@"%@\n", ingredientName];
-                NSLog(@"%@", allIngredients);
+               
             }
             self.recipeIngredients.text = allIngredients;
         });
@@ -53,6 +65,26 @@
         
     }];
     
+}
+
+-(NSString *)convertHTML:(NSString *)html {
+    
+    NSScanner *myScanner;
+    NSString *text = nil;
+    myScanner = [NSScanner scannerWithString:html];
+    
+    while ([myScanner isAtEnd] == NO) {
+        
+        [myScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        [myScanner scanUpToString:@">" intoString:&text] ;
+        
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
+    }
+    //
+    html = [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return html;
 }
 
 - (void)didReceiveMemoryWarning {

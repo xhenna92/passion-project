@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FoldingTabBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HSDatePickerViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3B656B983B0B58C7B555EFC49FCFAA00</key>
+		<key>479034B1506D2E7D1A2E48A9F7BF3A5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9145E070690055EA2D82D264E78B0F71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>928353533005A4198EBDA5B700D37B64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD2CEBA135E848721F2D7EC758D7E2C8</key>
+		<key>C00B8D4BFE8A20AD034816BAF4FD14E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

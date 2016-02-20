@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FE874FE9FE09A5680FFFE075'
+               BlueprintIdentifier = '1B5BF2863A5B76F622F4CF8E'
                BlueprintName = 'HSDatePickerViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libHSDatePickerViewController.a'>

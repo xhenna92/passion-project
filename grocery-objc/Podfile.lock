@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - Firebase (2.5.1)
+  - FoldingTabBar (1.0.2)
   - HSDatePickerViewController (1.0.4)
   - NSDate+RelativeTime (1.0.1)
   - Unirest (1.1.4)
@@ -22,6 +23,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Firebase (>= 2.5.0)
+  - FoldingTabBar (~> 1.0)
   - HSDatePickerViewController (~> 1.0)
   - NSDate+RelativeTime (~> 1.0)
   - Unirest (~> 1.1.4)
@@ -29,6 +31,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  FoldingTabBar: 79df76dfd5a84c0a369beaa378a31c07aa53b6b2
   HSDatePickerViewController: 5a72b71f8c3b10e76f2c28a898f8572b551432a6
   NSDate+RelativeTime: 1b03a562615a4496a826e322096e5792e6706612
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac

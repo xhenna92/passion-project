@@ -67,6 +67,11 @@
         [request setHeaders:headers];
     }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
         
+        if (error) {
+            NSLog(@"%@", error);
+        }
+        
+        NSLog(@"hi");
         
         NSArray *json = [NSJSONSerialization JSONObjectWithData:response.rawBody
                                                              options:kNilOptions
