@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
     
     NSString *foodURL = [NSString stringWithFormat:@"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/%@/information", self.recipeID];
@@ -37,18 +36,20 @@
                                                              options:kNilOptions
                                                                error:nil];
         
-        NSArray *ingredients = [json objectForKey:@"extendedIngredients"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.recipeTitle.text = [json objectForKey:@"title"];
+            NSArray *ingredients = [json objectForKey:@"extendedIngredients"];
+            NSMutableString* allIngredients = [NSMutableString stringWithCapacity:150];
+            
+            for(NSDictionary * ingredient in ingredients){
+                NSString * ingredientName = [ingredient objectForKey:@"originalString"];
+                [allIngredients appendFormat:@"%@\n", ingredientName];
+                NSLog(@"%@", allIngredients);
+            }
+            self.recipeIngredients.text = allIngredients;
+        });
         
-        NSString * allIngredients = @"";
         
-        for(NSDictionary * ingredient in ingredients){
-            NSString * ingredientName = [ingredient objectForKey:@"originalString"];
-            [allIngredients stringByAppendingString: [NSString stringWithFormat:@"%@\n", ingredientName]];
-        }
-        
-        self.recipeTitle.text = [json objectForKey:@"title"];
-        self.recipeIngredients.text = allIngredients;
-        NSLog(@"%@", allIngredients);
         
     }];
     

@@ -73,9 +73,11 @@
                                                                error:nil];
         self.recipes = [json mutableCopy];
         
-        NSLog(@"json: %@", self.recipes);
+        //NSLog(@"json: %@", self.recipes);
         
-        [self.tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
         
     }];
     
@@ -103,7 +105,6 @@
    
     RecipesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipeIdentifier" forIndexPath:indexPath];
     NSDictionary * recipe = self.recipes[indexPath.row];
-    NSLog(@"%@", recipe);
     cell.recipeLabel.text = [recipe objectForKey:@"title"];
     
     cell.clipsToBounds = YES;
@@ -114,9 +115,22 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+    [self performSegueWithIdentifier:@"recipedetailsegue" sender:nil];
+    
+    
+}
 
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    
     RecipeDetailViewController *destViewController = segue.destinationViewController;
     destViewController.recipeID = [self.recipes[indexPath.row] objectForKey:@"id"];
     
