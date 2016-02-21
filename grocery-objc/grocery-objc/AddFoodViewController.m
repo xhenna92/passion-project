@@ -11,10 +11,21 @@
 #import <AFNetworking/AFNetworking.h>
 #import "HSDatePickerViewController.h"
 
-@interface AddFoodViewController () <HSDatePickerViewControllerDelegate>
+@interface AddFoodViewController () <
+HSDatePickerViewControllerDelegate,
+UITableViewDelegate,
+UITableViewDataSource,
+UISearchBarDelegate,
+UISearchBarDelegate
+>
+
+@property (nonatomic) NSMutableArray *autoCompleteSearchResults;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic) AFHTTPSessionManager *manager;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (nonatomic, strong) NSDate * expirationDate;
-
+@property (weak, nonatomic) IBOutlet UIButton *addDateButton;
 
 @end
 
@@ -22,7 +33,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.autoCompleteSearchResults = [[NSMutableArray alloc] init];
+    self.manager = [[AFHTTPSessionManager alloc] init];
+    self.searchBar.delegate = self;
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal; // remove border from search bar
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.hidden = YES;
 
     // Do any additional setup after loading the view.
 
@@ -32,6 +49,80 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - SearchBar delegate methods
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    [searchBar setShowsCancelButton:YES animated:YES];
+    [self searchBar:searchBar textDidChange:searchBar.text];
+    
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    self.tableView.hidden = YES;
+    return YES;
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchBar.text.length > 0) {
+        self.tableView.hidden = NO;
+        
+        //API Call
+        
+        NSString *url = [NSString stringWithFormat:@"https://apibeta.nutritionix.com/v2/autocomplete?appId=827182c3&appKey=d6e62d15fdeba605e144d350d5587dde&q=%@", searchText];
+        NSString *encodedString = [url stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]];
+        [self.manager GET:encodedString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            self.autoCompleteSearchResults = responseObject;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"%@", error);
+        }];
+
+        
+        
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    searchBar.text = @"";
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+    [self.tableView setHidden:YES];
+}
+
+
+#pragma mark - TableView delegate methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.autoCompleteSearchResults.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AutocompleteIdentifier" forIndexPath:indexPath];
+        cell.textLabel.text = [self.autoCompleteSearchResults[indexPath.row] objectForKey:@"text"];
+        
+        return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+    [self.searchBar resignFirstResponder];
+    
+    self.nameTextField.text = [self.autoCompleteSearchResults[indexPath.row] objectForKey:@"text"];
+    
+}
+
+
+
+
 - (IBAction)addButtonTapped:(UIButton *)sender {
     
     NSString *foodName = [self.nameTextField.text lowercaseString];
@@ -74,8 +165,13 @@
 
 }
 - (void)hsDatePickerPickedDate:(NSDate *)date {
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterNoStyle];
+    
+    
     self.expirationDate = date;
-
+    self.addDateButton.titleLabel.text = dateString;
 }
 
 

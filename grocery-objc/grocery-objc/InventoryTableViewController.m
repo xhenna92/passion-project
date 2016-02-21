@@ -15,7 +15,7 @@
 
 
 @interface InventoryTableViewController ()
-    @property (nonatomic) foodModel *sharedManager;
+@property (nonatomic) foodModel *sharedManager;
 @end
 
 @implementation InventoryTableViewController
@@ -34,13 +34,12 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 50;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                                initWithTitle:@"Add"
-                                                style:UIBarButtonSystemItemAdd
-                                                target:self
-                                                action:@selector(addFood:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add-to-cart-black"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(addFood:)];
     
-   self.sharedManager = [foodModel sharedManager];
+    self.sharedManager = [foodModel sharedManager];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -50,7 +49,7 @@
     Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
     [myRootRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
-        
+            
             NSDictionary * jsonFoods = snapshot.value;
             NSMutableArray *tempFoodArray = [[NSMutableArray alloc]init];
             
@@ -60,29 +59,29 @@
                 
                 [tempFoodArray addObject:foodWithData];
             }
-        NSArray *sortedArray;
-        sortedArray = [tempFoodArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSArray *sortedArray;
+            sortedArray = [tempFoodArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                
+                
+                NSString *firstKey = [[(NSDictionary*)a allKeys]firstObject];
+                NSTimeInterval first = [[[(NSDictionary*)a objectForKey:firstKey] objectForKey: @"Expiration Date"] doubleValue];
+                NSDate * dateA = [NSDate dateWithTimeIntervalSince1970:first];
+                NSString *secondKey = [[(NSDictionary*)b allKeys]firstObject];
+                NSTimeInterval second = [[[(NSDictionary*)b objectForKey:secondKey] objectForKey: @"Expiration Date"] doubleValue];
+                NSDate * dateB = [NSDate dateWithTimeIntervalSince1970:second];
+                
+                return [dateA compare:dateB];
+            }];
             
-            
-            NSString *firstKey = [[(NSDictionary*)a allKeys]firstObject];
-            NSTimeInterval first = [[[(NSDictionary*)a objectForKey:firstKey] objectForKey: @"Expiration Date"] doubleValue];
-            NSDate * dateA = [NSDate dateWithTimeIntervalSince1970:first];
-            NSString *secondKey = [[(NSDictionary*)b allKeys]firstObject];
-            NSTimeInterval second = [[[(NSDictionary*)b objectForKey:secondKey] objectForKey: @"Expiration Date"] doubleValue];
-            NSDate * dateB = [NSDate dateWithTimeIntervalSince1970:second];
-            
-            return [dateA compare:dateB];
-        }];
-            
-        self.sharedManager.foodData = [sortedArray mutableCopy];
-        [self.tableView reloadData];
+            self.sharedManager.foodData = [sortedArray mutableCopy];
+            [self.tableView reloadData];
         }
         
     }];
 }
 
 -(IBAction)addFood:(id)sender{
-   AddFoodViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"addFoodVC"];
+    AddFoodViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"addFoodVC"];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -125,7 +124,7 @@
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     
     
     return YES;
@@ -135,25 +134,25 @@
 
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 
 /*
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
