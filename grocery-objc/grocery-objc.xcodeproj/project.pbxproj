@@ -23,6 +23,7 @@
 		F0839B121C77972E0059E033 /* foodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0839B111C77972E0059E033 /* foodModel.m */; };
 		F0839B151C779A640059E033 /* RecipesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0839B141C779A640059E033 /* RecipesTableViewController.m */; };
 		F0839B1E1C77B4400059E033 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0839B1D1C77B4400059E033 /* RecipeDetailViewController.m */; };
+		F0AD31E61C7940DC00D13E63 /* BarCodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD31E51C7940DC00D13E63 /* BarCodeScannerViewController.m */; };
 		F0DEB2481C764781004A2311 /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DEB2471C764781004A2311 /* AddFoodViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,8 @@
 		F0839B141C779A640059E033 /* RecipesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesTableViewController.m; sourceTree = "<group>"; };
 		F0839B1C1C77B4400059E033 /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
 		F0839B1D1C77B4400059E033 /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
+		F0AD31E41C7940DC00D13E63 /* BarCodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerViewController.h; sourceTree = "<group>"; };
+		F0AD31E51C7940DC00D13E63 /* BarCodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerViewController.m; sourceTree = "<group>"; };
 		F0DEB2461C764781004A2311 /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
 		F0DEB2471C764781004A2311 /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +119,8 @@
 				4D7C94721C765D21004152B4 /* InventoryTableViewCell.m */,
 				4D7C94731C765D21004152B4 /* InventoryTableViewCell.xib */,
 				4DA094BA1C73E79B002F2750 /* Main.storyboard */,
+				F0AD31E41C7940DC00D13E63 /* BarCodeScannerViewController.h */,
+				F0AD31E51C7940DC00D13E63 /* BarCodeScannerViewController.m */,
 				F0839B1C1C77B4400059E033 /* RecipeDetailViewController.h */,
 				F0839B1D1C77B4400059E033 /* RecipeDetailViewController.m */,
 				F0839B131C779A640059E033 /* RecipesTableViewController.h */,
@@ -283,6 +288,7 @@
 				4D8664BD1C755D93005BE801 /* InventoryTableViewController.m in Sources */,
 				4DA094B31C73E79B002F2750 /* main.m in Sources */,
 				F0839B121C77972E0059E033 /* foodModel.m in Sources */,
+				F0AD31E61C7940DC00D13E63 /* BarCodeScannerViewController.m in Sources */,
 				F0839B1E1C77B4400059E033 /* RecipeDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

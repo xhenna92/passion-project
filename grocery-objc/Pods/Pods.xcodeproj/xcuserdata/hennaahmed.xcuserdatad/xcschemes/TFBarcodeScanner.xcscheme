@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '892DD8E35AB4D21ECEDCA0CB'
-               BlueprintName = 'Firebase'
+               BlueprintIdentifier = 'A544879914BDA176D1A9FCA2'
+               BlueprintName = 'TFBarcodeScanner'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libFirebase.a'>
+               BuildableName = 'libTFBarcodeScanner.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

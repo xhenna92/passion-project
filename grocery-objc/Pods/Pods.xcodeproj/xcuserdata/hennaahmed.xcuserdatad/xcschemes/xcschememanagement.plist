@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TFBarcodeScanner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Unirest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +52,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BB6D781AD6AD76C45B7DE3E57FA84B7</key>
+		<key>1E21AC36A85D48283C5B95AFB51211FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5A34447AAB9178B2A294794414D1199F</key>
+		<key>6B0B9C928B05BA6346AB032DD0260C56</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B0B9C928B05BA6346AB032DD0260C56</key>
+		<key>7E3B9349B9F00257BC59BA86B7B0BDFF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97F4458A88ABB85178D726DCAA684712</key>
+		<key>98C445AE8FC6CABC41A4DB4D7F966BD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB2707AC41F952C9106551D1C3340BB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

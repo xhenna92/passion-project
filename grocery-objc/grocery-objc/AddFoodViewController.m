@@ -10,6 +10,7 @@
 #import <Firebase/Firebase.h>
 #import <AFNetworking/AFNetworking.h>
 #import "HSDatePickerViewController.h"
+#import "BarCodeScannerViewController.h"
 
 @interface AddFoodViewController () <
 HSDatePickerViewControllerDelegate,
@@ -40,6 +41,13 @@ UISearchBarDelegate
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.hidden = YES;
+    
+    [self.searchBar setShowsBookmarkButton:YES];
+    
+    
+    [self.searchBar setImage:[UIImage imageNamed:@"barcode"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+    [self.searchBar setImage:[UIImage imageNamed:@"barcode"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateSelected];
+
 
     // Do any additional setup after loading the view.
 
@@ -51,6 +59,13 @@ UISearchBarDelegate
 }
 
 #pragma mark - SearchBar delegate methods
+
+-(void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar{
+    BarCodeScannerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"barcodeScanner"];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     [searchBar setShowsCancelButton:YES animated:YES];
     [self searchBar:searchBar textDidChange:searchBar.text];
@@ -171,7 +186,8 @@ UISearchBarDelegate
     
     
     self.expirationDate = date;
-    self.addDateButton.titleLabel.text = dateString;
+    [self.addDateButton setImage:nil forState:UIControlStateNormal];
+    [self.addDateButton setTitle:dateString forState:UIControlStateNormal];
 }
 
 
