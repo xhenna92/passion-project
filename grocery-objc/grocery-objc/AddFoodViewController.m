@@ -24,9 +24,11 @@ UISearchBarDelegate
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) AFHTTPSessionManager *manager;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (nonatomic, strong) NSDate * expirationDate;
 @property (weak, nonatomic) IBOutlet UIButton *addDateButton;
+@property (strong, nonatomic) IBOutlet UILabel *foodLabel;
+@property (strong, nonatomic) IBOutlet UILabel *messageLabel;
+@property (strong, nonatomic) IBOutlet UILabel *expirationMessageLabel;
 
 @end
 
@@ -35,9 +37,6 @@ UISearchBarDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:213.0/255.0 blue:199.0/255.0 alpha:1];
-
-    
     self.autoCompleteSearchResults = [[NSMutableArray alloc] init];
     self.manager = [[AFHTTPSessionManager alloc] init];
     self.searchBar.delegate = self;
@@ -45,6 +44,7 @@ UISearchBarDelegate
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.hidden = YES;
+    self.expirationMessageLabel.hidden = YES;
     
     [self.searchBar setShowsBookmarkButton:YES];
     
@@ -150,7 +150,7 @@ UISearchBarDelegate
     [self.searchBar setShowsCancelButton:NO animated:YES];
     [self.searchBar resignFirstResponder];
     
-    self.nameTextField.text = [self.autoCompleteSearchResults[indexPath.row] objectForKey:@"text"];
+    self.foodLabel.text = [self.autoCompleteSearchResults[indexPath.row]objectForKey:@"text"];
     
 }
 
@@ -159,7 +159,9 @@ UISearchBarDelegate
 
 - (IBAction)addButtonTapped:(UIButton *)sender {
     
-    NSString *foodName = [self.nameTextField.text lowercaseString];
+
+    NSString *foodName = [self.foodLabel.text lowercaseString];
+    
     NSString *emojiURL = [NSString stringWithFormat:@"https://www.emojidex.com/api/v1/search/emoji/?code_sw=%@", foodName];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
     
@@ -192,6 +194,8 @@ UISearchBarDelegate
 }
 
 - (IBAction)pickDateTapped:(UIButton *)sender {
+    self.messageLabel.hidden = YES;
+    
     HSDatePickerViewController *hsdpvc = [[HSDatePickerViewController alloc] init];
     hsdpvc.delegate = self;
     
@@ -199,14 +203,18 @@ UISearchBarDelegate
 
 }
 - (void)hsDatePickerPickedDate:(NSDate *)date {
+    
+    NSString *bestBeforeMessage = @"best before:";
     NSString *dateString = [NSDateFormatter localizedStringFromDate:date
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterNoStyle];
+    NSString *message = [NSString stringWithFormat:@"%@\n%@", bestBeforeMessage, dateString];
     
-    
+    self.expirationMessageLabel.text = message;
+    self.expirationMessageLabel.hidden = NO;
     self.expirationDate = date;
     [self.addDateButton setImage:nil forState:UIControlStateNormal];
-    [self.addDateButton setTitle:dateString forState:UIControlStateNormal];
+//    [self.addDateButton setTitle:message forState:UIControlStateNormal];
 }
 
 
