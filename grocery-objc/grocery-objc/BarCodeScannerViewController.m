@@ -26,6 +26,9 @@
     self.overlayView.alpha = 0.0f;
     
     NSLog(@"%d", self.hasCamera);
+    
+    self.view.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:213.0/255.0 blue:199.0/255.0 alpha:1];
+
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

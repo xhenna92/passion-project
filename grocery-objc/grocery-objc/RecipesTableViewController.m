@@ -34,6 +34,13 @@
     //    self.tableView.rowHeight = UITableViewAutomaticDimension;
     //    self.tableView.estimatedRowHeight = 50;
     
+    self.tableView.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:213.0/255.0 blue:199.0/255.0 alpha:1];
+    self.tableView.backgroundView.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:213.0/255.0 blue:199.0/255.0 alpha:1];
+    
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.tabBarController.tabBar setTranslucent:NO];
+
+    
     self.recipes = [[NSMutableArray alloc]init];
     self.aboutToExpire = [[NSMutableArray alloc]init];
     self.sharedManager = [foodModel sharedManager];
@@ -112,6 +119,11 @@
     cell.recipeLabel.text = [recipe objectForKey:@"title"];
     
     cell.clipsToBounds = YES;
+    
+    // stretch cell separators across entire view
+    cell.preservesSuperviewLayoutMargins = false;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.layoutMargins = UIEdgeInsetsZero;
     
     [cell.recipeImage sd_setImageWithURL:[NSURL URLWithString:[recipe objectForKey:@"image"]]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];

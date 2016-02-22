@@ -23,8 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setTranslucent:YES];
-    [self.tabBarController.tabBar setTranslucent:YES];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.tabBarController.tabBar setTranslucent:NO];
+    
     
     // set up custom cell
     UINib *nib = [UINib nibWithNibName:@"InventoryTableViewCell" bundle:nil];
@@ -34,7 +35,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 50;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add-to-cart-black"]
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"shopping"]
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(addFood:)];

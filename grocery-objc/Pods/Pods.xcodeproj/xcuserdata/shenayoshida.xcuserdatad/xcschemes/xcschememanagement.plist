@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>FoldingTabBar.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>HSDatePickerViewController.xcscheme</key>
 		<dict>
@@ -26,6 +36,16 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>TFBarcodeScanner.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Unirest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,6 +57,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1820533B25A5682E2B3DDCBE6B35FED5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E21AC36A85D48283C5B95AFB51211FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,6 +87,31 @@
 			<true/>
 		</dict>
 		<key>7300726BC287BAA299C777A9246E2671</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E3B9349B9F00257BC59BA86B7B0BDFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9145E070690055EA2D82D264E78B0F71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>928353533005A4198EBDA5B700D37B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98C445AE8FC6CABC41A4DB4D7F966BD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB2707AC41F952C9106551D1C3340BB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

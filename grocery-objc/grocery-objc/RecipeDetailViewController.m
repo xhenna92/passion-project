@@ -24,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.tabBarController.tabBar setTranslucent:NO];
+
     
     NSString *foodURL = [NSString stringWithFormat:@"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/%@/information", self.recipeID];
     

@@ -22,14 +22,24 @@
 
 @implementation AppDelegate
 
+/*
+COLOR KEY: 
+ 
+white color: [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1]
+peach color: [UIColor colorWithRed:248.0/255.0 green:213.0/255.0 blue:199.0/255.0 alpha:1]
+ 
+*/
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    UINavigationBar.appearance.barTintColor = [UIColor blackColor];
+    
+    
     YALFoldingTabBarController *tabBarController = (YALFoldingTabBarController *) self.window.rootViewController;
     
     //prepare leftBarItems
-    YALTabBarItem *item1 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"groceries"]
+    YALTabBarItem *item1 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"kitchen"]
                                                       leftItemImage:nil
                                                      rightItemImage:nil];
     
@@ -38,22 +48,22 @@
     //prepare rightBarItems
     
     
-    YALTabBarItem *item3 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"chef"]
+    YALTabBarItem *item3 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"cooking-4"]
                                                       leftItemImage:nil
                                                      rightItemImage:nil];
     
     tabBarController.rightBarItems = @[item3];
     
-    tabBarController.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
+    tabBarController.centerButtonImage = [UIImage imageNamed:@"sign"];
     
     tabBarController.selectedIndex = 0;
     
     //customize tabBarView
     tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
     tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
-    tabBarController.tabBarView.backgroundColor = [UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:0.5];
-    tabBarController.tabBarView.tabBarColor = [UIColor colorWithRed:72.0/255.0 green:211.0/255.0 blue:178.0/255.0 alpha:1];
-    tabBarController.tabBarView.dotColor = [UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:1];
+    tabBarController.tabBarView.backgroundColor = [UIColor blackColor];
+    tabBarController.tabBarView.tabBarColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1];
+//    tabBarController.tabBarView.dotColor = [UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:1];
     tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight;
     tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
     tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets;

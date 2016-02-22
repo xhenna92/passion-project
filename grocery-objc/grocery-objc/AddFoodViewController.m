@@ -34,6 +34,10 @@ UISearchBarDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:213.0/255.0 blue:199.0/255.0 alpha:1];
+
+    
     self.autoCompleteSearchResults = [[NSMutableArray alloc] init];
     self.manager = [[AFHTTPSessionManager alloc] init];
     self.searchBar.delegate = self;
@@ -62,6 +66,7 @@ UISearchBarDelegate
 
 -(void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar{
     BarCodeScannerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"barcodeScanner"];
+    
     
     [self presentViewController:vc animated:YES completion:nil];
 }
