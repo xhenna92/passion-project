@@ -53,7 +53,7 @@
         NSTimeInterval interval = [[[food objectForKey:key] objectForKey: @"Expiration Date"] doubleValue];
         NSDate * foodDate = [NSDate dateWithTimeIntervalSince1970:interval];
         
-        if([foodDate compare:nextWeek]<1){
+        if([foodDate compare:nextWeek]<1 && [foodDate compare:[NSDate date]]>0){
             [self.aboutToExpire addObject:key];
         }
     }

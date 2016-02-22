@@ -51,10 +51,24 @@ UISearchBarDelegate
     
     [self.searchBar setImage:[UIImage imageNamed:@"barcode"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
     [self.searchBar setImage:[UIImage imageNamed:@"barcode"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateSelected];
+    
+    UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    downSwipe.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:downSwipe];
 
 
     // Do any additional setup after loading the view.
 
+}
+
+- (void) handleSwipe: (UISwipeGestureRecognizer *) gesture {
+    switch (gesture.direction) {
+        case UISwipeGestureRecognizerDirectionDown:
+            [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

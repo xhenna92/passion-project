@@ -111,12 +111,17 @@
     NSString *displayName = [NSString stringWithFormat:@"%@%@", key, emoji];
     NSTimeInterval interval = [[foodDetails objectForKey:@"Expiration Date"] doubleValue];
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:interval];
-    NSString *time_ago = [date relativeTime];
-    
-    
+    if ([date compare:[NSDate date]]<0) {
+        cell.labelDate.text = @"expired";
+        cell.labelDate.textColor = [UIColor redColor];
+    }
+    else{
+        cell.labelDate.text = [date relativeTime];
+        cell.labelDate.textColor = [UIColor blackColor];
+    }
     
     cell.labelFood.text = displayName;
-    cell.labelDate.text = time_ago;
+    
     
     
     return cell;
