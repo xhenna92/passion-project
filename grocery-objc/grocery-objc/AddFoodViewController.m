@@ -128,13 +128,14 @@ UISearchBarDelegate
     return YES;
 }
 
+
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (searchBar.text.length > 0) {
         self.tableView.hidden = NO;
         
         //API Call
         
-        NSString *url = [NSString stringWithFormat:@"https://apibeta.nutritionix.com/v2/autocomplete?appId=827182c3&appKey=d6e62d15fdeba605e144d350d5587dde&q=%@", searchText];
+        NSString *url = [NSString stringWithFormat:@"https://apibeta.nutritionix.com/v2/autocomplete?appId=ebecb9f6&appKey=8779a49b103c3b99986cd0e27c37d6b9&q=%@", searchText];
         NSString *encodedString = [url stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]];
         [self.manager GET:encodedString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             self.autoCompleteSearchResults = responseObject;
