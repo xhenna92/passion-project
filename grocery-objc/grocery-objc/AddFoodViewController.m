@@ -86,8 +86,6 @@ UISearchBarDelegate
 #pragma mark - SearchBar delegate methods
 
 -(void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar{
-    //    (id)initWithCornerView:(BOOL)showCornerView controlView:(BOOL)showControlsView barcodesHandler:(RSBarcodesHandler)barcodesHandler;
-    //    (id)initWithCornerView:(BOOL)showCornerView controlView:(BOOL)showControlsView barcodesHandler:(RSBarcodesHandler)barcodesHandler preferredCameraPosition:(AVCaptureDevicePosition)cameraDevicePosition;
     
     RSScannerViewController *scanner = [[RSScannerViewController alloc] initWithCornerView:YES
                                                                                controlView:YES
@@ -96,12 +94,6 @@ UISearchBarDelegate
                                                                                [self.presentingViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
                                                                                
                                                                                [self findProductWithBarcode:something.stringValue];
-                                                                               
-                                                                               //https://api.outpan.com/v2/products/0095072008603?apikey=7b52f93cbc307f682e891bc99a5adc19
-                                                                               
-                                                                               
-                                                                               
-                                                                               
                                                                                
                                                                            }
                                                                    preferredCameraPosition:AVCaptureDevicePositionBack];
