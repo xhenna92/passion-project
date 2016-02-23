@@ -36,10 +36,20 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>RSBarcodes.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>8</integer>
+		</dict>
+		<key>SIAlertView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>TFBarcodeScanner.xcscheme</key>
 		<dict>
@@ -71,12 +81,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4EB392DBB5283EE08DA12AB8336D08CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4FC57AD0A574066CF6D2C2D9857A50F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>569735B422E0E4CEEFC5C6955AFDE3A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>64652363A141271942BD6F746781173D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -111,12 +131,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A5620D90C319CE08C7E4BD86A7665AEF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB01679F34E5831762A89315547D9445</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EB2707AC41F952C9106551D1C3340BB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EC0AAC3690B197E00009BBD3D868A1EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F86F3D4C7C4CF4BC533F12010483E3EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
