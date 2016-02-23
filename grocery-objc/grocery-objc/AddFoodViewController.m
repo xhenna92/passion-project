@@ -104,7 +104,7 @@ UISearchBarDelegate
 }
 
 - (void) findProductWithBarcode: (NSString *) barcode{
-    NSString *url = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/item?upc=%@&appId=827182c3&appKey=d6e62d15fdeba605e144d350d5587dde", barcode];
+    NSString *url = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/item?upc=%@&appId=ebecb9f6&appKey=8779a49b103c3b99986cd0e27c37d6b9", barcode];
     
     [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.foodLabel.text = [responseObject objectForKey:@"item_name"];
