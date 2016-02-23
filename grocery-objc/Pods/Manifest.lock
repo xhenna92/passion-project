@@ -18,10 +18,11 @@ PODS:
   - FoldingTabBar (1.0.2)
   - HSDatePickerViewController (1.0.4)
   - NSDate+RelativeTime (1.0.1)
+  - RSBarcodes (0.1.4)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
-  - TFBarcodeScanner (1.2.0)
+  - SIAlertView (1.3)
   - Unirest (1.1.4)
 
 DEPENDENCIES:
@@ -30,8 +31,9 @@ DEPENDENCIES:
   - FoldingTabBar (~> 1.0)
   - HSDatePickerViewController (~> 1.0)
   - NSDate+RelativeTime (~> 1.0)
+  - RSBarcodes (~> 0.1.4)
   - SDWebImage (~> 3.7)
-  - TFBarcodeScanner (~> 1.2)
+  - SIAlertView (~> 1.3)
   - Unirest (~> 1.1.4)
 
 SPEC CHECKSUMS:
@@ -40,8 +42,9 @@ SPEC CHECKSUMS:
   FoldingTabBar: 79df76dfd5a84c0a369beaa378a31c07aa53b6b2
   HSDatePickerViewController: 5a72b71f8c3b10e76f2c28a898f8572b551432a6
   NSDate+RelativeTime: 1b03a562615a4496a826e322096e5792e6706612
+  RSBarcodes: 6b062b5aba3e75a5e889b2465ef1bb256215fbd0
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  TFBarcodeScanner: 52168d975fde5a51cfe53c557a66a67b5f5b0d19
+  SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
 
 COCOAPODS: 0.39.0

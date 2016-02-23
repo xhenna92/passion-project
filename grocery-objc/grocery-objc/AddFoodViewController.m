@@ -10,7 +10,8 @@
 #import <Firebase/Firebase.h>
 #import <AFNetworking/AFNetworking.h>
 #import "HSDatePickerViewController.h"
-#import "BarCodeScannerViewController.h"
+#import <RSBarcodes/RSBarcodes.h>
+#import <SIAlertView/SIAlertView.h>
 
 @interface AddFoodViewController () <
 HSDatePickerViewControllerDelegate,
@@ -29,6 +30,9 @@ UISearchBarDelegate
 @property (strong, nonatomic) IBOutlet UILabel *foodLabel;
 @property (strong, nonatomic) IBOutlet UILabel *messageLabel;
 @property (strong, nonatomic) IBOutlet UILabel *expirationMessageLabel;
+@property (nonatomic) BOOL foodSet;
+@property (nonatomic) BOOL dateSet;
+
 
 @end
 
@@ -45,6 +49,8 @@ UISearchBarDelegate
     self.tableView.dataSource = self;
     self.tableView.hidden = YES;
     self.expirationMessageLabel.hidden = YES;
+    self.foodSet = NO;
+    self.dateSet = NO;
     
     [self.searchBar setShowsBookmarkButton:YES];
     
@@ -55,11 +61,12 @@ UISearchBarDelegate
     UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     downSwipe.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:downSwipe];
-
-
+    
+    
     // Do any additional setup after loading the view.
-
+    
 }
+
 
 - (void) handleSwipe: (UISwipeGestureRecognizer *) gesture {
     switch (gesture.direction) {
@@ -79,10 +86,42 @@ UISearchBarDelegate
 #pragma mark - SearchBar delegate methods
 
 -(void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar{
-    BarCodeScannerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"barcodeScanner"];
+    //    (id)initWithCornerView:(BOOL)showCornerView controlView:(BOOL)showControlsView barcodesHandler:(RSBarcodesHandler)barcodesHandler;
+    //    (id)initWithCornerView:(BOOL)showCornerView controlView:(BOOL)showControlsView barcodesHandler:(RSBarcodesHandler)barcodesHandler preferredCameraPosition:(AVCaptureDevicePosition)cameraDevicePosition;
+    
+    RSScannerViewController *scanner = [[RSScannerViewController alloc] initWithCornerView:YES
+                                                                               controlView:YES
+                                                                           barcodesHandler:^(NSArray *barcodeObjects) {
+                                                                               AVMetadataMachineReadableCodeObject *something = [barcodeObjects firstObject];
+                                                                               [self.presentingViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+                                                                               
+                                                                               [self findProductWithBarcode:something.stringValue];
+                                                                               
+                                                                               //https://api.outpan.com/v2/products/0095072008603?apikey=7b52f93cbc307f682e891bc99a5adc19
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                           }
+                                                                   preferredCameraPosition:AVCaptureDevicePositionBack];
+    [scanner setStopOnFirst:YES];
+    [self presentViewController:scanner animated:YES completion:nil];
     
     
-    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void) findProductWithBarcode: (NSString *) barcode{
+    NSString *url = [NSString stringWithFormat:@"https://api.nutritionix.com/v1_1/item?upc=%@&appId=827182c3&appKey=d6e62d15fdeba605e144d350d5587dde", barcode];
+    
+    [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.foodLabel.text = [responseObject objectForKey:@"item_name"];
+        self.foodSet = YES;
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
+    
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
@@ -113,7 +152,7 @@ UISearchBarDelegate
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"%@", error);
         }];
-
+        
         
         
     }
@@ -138,11 +177,11 @@ UISearchBarDelegate
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AutocompleteIdentifier" forIndexPath:indexPath];
-        cell.textLabel.text = [self.autoCompleteSearchResults[indexPath.row] objectForKey:@"text"];
-        
-        return cell;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AutocompleteIdentifier" forIndexPath:indexPath];
+    cell.textLabel.text = [self.autoCompleteSearchResults[indexPath.row] objectForKey:@"text"];
+    
+    return cell;
 }
 
 
@@ -151,7 +190,7 @@ UISearchBarDelegate
     [self.searchBar resignFirstResponder];
     
     self.foodLabel.text = [self.autoCompleteSearchResults[indexPath.row]objectForKey:@"text"];
-    
+    self.foodSet = YES;
 }
 
 
@@ -159,37 +198,55 @@ UISearchBarDelegate
 
 - (IBAction)addButtonTapped:(UIButton *)sender {
     
-
-    NSString *foodName = [self.foodLabel.text lowercaseString];
-    
-    NSString *emojiURL = [NSString stringWithFormat:@"https://www.emojidex.com/api/v1/search/emoji/?code_sw=%@", foodName];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
-    
-    [manager GET:emojiURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSArray * emojiData = [responseObject objectForKey:@"emoji"];
-        NSString *moji = @"";
-        for (NSDictionary* emoji in emojiData) {
-            
-            NSString *temp = [emoji objectForKey:@"moji"];
-            
-            if ( [temp isEqualToString:@""]) {
-                
-            }
-            else{
-                moji = temp;
-                break;
-            }
-        }
-
-        NSNumber *expires = [NSNumber numberWithDouble:[self.expirationDate timeIntervalSince1970]];
-        Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
-        [[myRootRef childByAppendingPath:foodName] setValue:@{ @"Expiration Date": expires, @"emoji":moji }];
+    if (self.foodSet && self.dateSet) {
+        NSString *foodName = [self.foodLabel.text lowercaseString];
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        NSString *emojiURL = [NSString stringWithFormat:@"https://www.emojidex.com/api/v1/search/emoji/?code_sw=%@", foodName];
+        NSString *encodedString = [emojiURL stringByAddingPercentEncodingWithAllowedCharacters: [NSCharacterSet URLQueryAllowedCharacterSet]];
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
-    }];
+        AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+        
+        [manager GET:encodedString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray * emojiData = [responseObject objectForKey:@"emoji"];
+            NSString *moji = @"";
+            for (NSDictionary* emoji in emojiData) {
+                
+                NSString *temp = [emoji objectForKey:@"moji"];
+                
+                if ( [temp isEqualToString:@""]) {
+                    
+                }
+                else{
+                    moji = temp;
+                    break;
+                }
+            }
+            
+            NSNumber *expires = [NSNumber numberWithDouble:[self.expirationDate timeIntervalSince1970]];
+            Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://scorching-heat-3082.firebaseio.com/Grocery-List"];
+            [[myRootRef childByAppendingPath:foodName] setValue:@{ @"Expiration Date": expires, @"emoji":moji }];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"%@", error);
+        }];
+    }
+    else{
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Oops" andMessage:@"Please make sure you have a date and name for your food."];
+        
+        [alertView addButtonWithTitle:@"Ok"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alert) {
+                                  
+                              }];
+        
+        
+        alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+        
+        [alertView show];
+    }
+    
     
 }
 
@@ -200,7 +257,7 @@ UISearchBarDelegate
     hsdpvc.delegate = self;
     
     [self presentViewController:hsdpvc animated:YES completion:nil];
-
+    
 }
 - (void)hsDatePickerPickedDate:(NSDate *)date {
     
@@ -214,18 +271,19 @@ UISearchBarDelegate
     self.expirationMessageLabel.hidden = NO;
     self.expirationDate = date;
     [self.addDateButton setImage:nil forState:UIControlStateNormal];
-//    [self.addDateButton setTitle:message forState:UIControlStateNormal];
+    self.dateSet = YES;
+    //    [self.addDateButton setTitle:message forState:UIControlStateNormal];
 }
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

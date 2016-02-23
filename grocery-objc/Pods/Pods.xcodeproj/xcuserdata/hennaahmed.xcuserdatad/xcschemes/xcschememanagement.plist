@@ -34,12 +34,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RSBarcodes.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TFBarcodeScanner.xcscheme</key>
+		<key>SIAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,7 +57,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1E21AC36A85D48283C5B95AFB51211FE</key>
+		<key>4EB392DBB5283EE08DA12AB8336D08CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B0B9C928B05BA6346AB032DD0260C56</key>
+		<key>64652363A141271942BD6F746781173D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E3B9349B9F00257BC59BA86B7B0BDFF</key>
+		<key>6B0B9C928B05BA6346AB032DD0260C56</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +92,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98C445AE8FC6CABC41A4DB4D7F966BD2</key>
+		<key>A5620D90C319CE08C7E4BD86A7665AEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB2707AC41F952C9106551D1C3340BB8</key>
+		<key>DB01679F34E5831762A89315547D9445</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F86F3D4C7C4CF4BC533F12010483E3EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
